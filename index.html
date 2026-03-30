@@ -1,0 +1,2014 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>İrem & Ömer Eren — Düğün Davetiyesi</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+<style>
+  :root {
+    --cream: #fdf8f0;
+    --cream-2: #f8f1e4;
+    --gold: #c9a84c;
+    --gold-light: #e8d5a3;
+    --dark: #2c2416;
+    --rose: #c4856a;
+    --deep: #1a140a;
+    --shadow: 0 20px 60px rgba(44, 36, 22, 0.12);
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream);
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+    cursor: default;
+    color: var(--dark);
+  }
+
+  #landing {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse at center, #2c2416 0%, #0f0a04 100%);
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+    padding: 24px;
+  }
+
+  #landing.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  #landing::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 30% 40%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 50% 20%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 85% 25%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 20% 70%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 60% 80%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 90%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 45% 55%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 75% 10%, rgba(255,255,255,0.6) 0%, transparent 100%);
+  }
+
+  .landing-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    position: relative;
+    z-index: 1;
+    width: min(100%, 420px);
+  }
+
+  .pre-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.4em;
+    font-size: 11px;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.5s forwards;
+    text-align: center;
+  }
+
+  .envelope-wrap {
+    opacity: 0;
+    animation: fadeUp 1s ease 0.8s forwards;
+  }
+
+  .envelope {
+    width: min(320px, 84vw);
+    aspect-ratio: 320 / 220;
+    position: relative;
+    cursor: pointer;
+    filter: drop-shadow(0 20px 60px rgba(201,168,76,0.25));
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+
+  .envelope:hover {
+    transform: translateY(-4px) scale(1.02);
+    filter: drop-shadow(0 28px 80px rgba(201,168,76,0.4));
+  }
+
+  .env-body {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, #f5ead8 0%, #ecdcc0 40%, #e0c898 100%);
+    border-radius: 4px 4px 12px 12px;
+    border: 1px solid rgba(201,168,76,0.5);
+  }
+
+  .wax-seal {
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #d4403a, #8b1a16);
+    border: 2px solid rgba(255,255,255,0.2);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4), inset 0 1px 2px rgba(255,255,255,0.15);
+    z-index: 5;
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    color: rgba(255,255,255,0.9);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  }
+
+  .env-flap {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    width: 0;
+    height: 0;
+    border-left: calc(min(320px, 84vw) / 2) solid transparent;
+    border-right: calc(min(320px, 84vw) / 2) solid transparent;
+    border-top: calc(min(320px, 84vw) * 0.375) solid #e8d5a3;
+    transform-origin: top center;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 3;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+  }
+
+  .env-flap::before {
+    content: '';
+    position: absolute;
+    top: calc(min(320px, 84vw) * -0.375);
+    left: calc(min(320px, 84vw) / -2);
+    width: 0;
+    height: 0;
+    border-left: calc(min(320px, 84vw) / 2) solid transparent;
+    border-right: calc(min(320px, 84vw) / 2) solid transparent;
+    border-top: calc(min(320px, 84vw) * 0.375) solid rgba(201,168,76,0.3);
+  }
+
+  .env-left {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 0;
+    border-bottom: calc(min(320px, 84vw) * 0.34375) solid #dcc88a;
+    border-right: calc(min(320px, 84vw) / 2) solid transparent;
+    z-index: 1;
+  }
+
+  .env-right {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 0; height: 0;
+    border-bottom: calc(min(320px, 84vw) * 0.34375) solid #d4bc7e;
+    border-left: calc(min(320px, 84vw) / 2) solid transparent;
+    z-index: 1;
+  }
+
+  .env-letter {
+    position: absolute;
+    width: 86%;
+    background: linear-gradient(to bottom, #fdf9f2, #faf4e8);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 2px;
+    left: 7%;
+    bottom: 10px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 0;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), height 0.6s ease;
+    height: 60px;
+    overflow: hidden;
+  }
+
+  .env-letter-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease 0.8s;
+    line-height: 1.6;
+    padding: 0 16px;
+  }
+
+  .envelope.open .env-flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+  }
+
+  .envelope.open .wax-seal {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .envelope.open .env-letter {
+    transform: translateY(-90px);
+    height: 120px;
+  }
+
+  .envelope.open .env-letter-text { opacity: 1; }
+
+  .click-hint {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    opacity: 0;
+    animation: pulse 2s ease 2s infinite, fadeUp 1s ease 1.5s forwards;
+    text-align: center;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  #main-content {
+    opacity: 0;
+    transition: opacity 1s ease;
+    min-height: 100vh;
+    visibility: hidden;
+  }
+
+  #main-content.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .top-actions {
+    position: fixed;
+    top: calc(16px + var(--safe-top));
+    right: 16px;
+    z-index: 998;
+    display: flex;
+    gap: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+
+  .top-actions.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .action-btn {
+    appearance: none;
+    border: 1px solid rgba(201,168,76,0.35);
+    background: rgba(253,248,240,0.88);
+    backdrop-filter: blur(12px);
+    color: var(--dark);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    border-radius: 999px;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+
+  .action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 24px 60px rgba(44,36,22,0.18);
+    background: rgba(255,255,255,0.95);
+  }
+
+  .action-btn:active { transform: translateY(0); }
+
+  #hero {
+    min-height: 100svh;
+    background: radial-gradient(ellipse at 30% 50%, #f5ede0 0%, #fdf8f0 60%, #f0e8d8 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding:
+      max(60px, calc(60px + var(--safe-top)))
+      20px
+      max(130px, calc(130px + var(--safe-bottom)));
+    isolation: isolate;
+  }
+
+  #hero::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,133,106,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  #hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -80px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    width: min(100%, 760px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-ornament {
+    color: var(--gold);
+    font-size: 28px;
+    letter-spacing: 0.4em;
+    margin-bottom: 12px;
+    opacity: 0.7;
+  }
+
+  .hero-pre {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    color: var(--rose);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .hero-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 10vw, 96px);
+    font-weight: 300;
+    color: var(--dark);
+    line-height: 1;
+    text-align: center;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-names .and {
+    font-style: italic;
+    color: var(--gold);
+    font-size: 0.5em;
+    display: block;
+    letter-spacing: 0.1em;
+    margin: 8px 0;
+  }
+
+  .hero-names .eren {
+    display: block;
+    font-size: 0.62em;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: var(--dark);
+    margin-top: 2px;
+  }
+
+  .hero-divider {
+    width: min(200px, 42vw);
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 32px auto;
+  }
+
+  .hero-invite {
+    font-size: clamp(16px, 2.5vw, 20px);
+    font-style: italic;
+    color: var(--dark);
+    text-align: center;
+    line-height: 1.8;
+    max-width: 500px;
+    font-weight: 300;
+  }
+
+  .hero-date-badge {
+    margin-top: clamp(26px, 4vw, 36px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: clamp(18px, 3vw, 20px) clamp(24px, 7vw, 40px);
+    position: relative;
+    background: rgba(255,255,255,0.58);
+    backdrop-filter: blur(10px);
+    width: fit-content;
+    max-width: calc(100vw - 40px);
+    box-shadow: 0 18px 50px rgba(44,36,22,0.08);
+  }
+
+  .hero-date-badge::before,
+  .hero-date-badge::after {
+    content: '✦';
+    position: absolute;
+    color: var(--gold);
+    font-size: 12px;
+  }
+
+  .hero-date-badge::before {
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--cream);
+    padding: 0 8px;
+  }
+
+  .hero-date-badge::after {
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--cream);
+    padding: 0 8px;
+  }
+
+  .badge-date {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(18px, 3vw, 22px);
+    color: var(--dark);
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+
+  .badge-time {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: clamp(10px, 2vw, 12px);
+    letter-spacing: 0.4em;
+    color: var(--rose);
+    text-align: center;
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    left: 50%;
+    bottom: max(18px, calc(18px + var(--safe-bottom)));
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.56;
+    animation: bounce 2s ease infinite;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .scroll-indicator.hidden { opacity: 0 !important; }
+
+  .scroll-indicator span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    color: var(--dark);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  #birds-section {
+    height: 100svh;
+    background: linear-gradient(170deg, #fdf6eb 0%, #f5e8d0 40%, #ede0c8 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #birds-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .birds-text {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    text-align: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+    white-space: nowrap;
+  }
+
+  .birds-text.visible { opacity: 1; }
+
+  .birds-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--rose);
+    letter-spacing: 0.3em;
+    margin-bottom: 8px;
+  }
+
+  #details {
+    padding: 100px 20px;
+    background: var(--dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #details::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 15% 25%, rgba(201,168,76,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 85% 15%, rgba(201,168,76,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 45% 75%, rgba(201,168,76,0.25) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 50%, rgba(201,168,76,0.15) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .details-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .details-ornament {
+    font-size: 32px;
+    color: var(--gold);
+    opacity: 0.6;
+    letter-spacing: 0.5em;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .details-title {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.5em;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+
+  .detail-item {
+    margin-bottom: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .detail-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .detail-icon {
+    font-size: 24px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .detail-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .detail-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 4vw, 32px);
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.4;
+  }
+
+  .detail-value em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  #footer {
+    padding: 60px 20px;
+    background: var(--deep);
+    text-align: center;
+  }
+
+  .footer-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 32px;
+    color: var(--gold-light);
+    margin-bottom: 16px;
+    font-weight: 300;
+  }
+
+  .footer-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+  }
+
+  .footer-hearts {
+    font-size: 20px;
+    margin: 20px 0;
+    letter-spacing: 0.3em;
+  }
+
+  #rope-canvas {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 999;
+    width: 4px;
+    height: 100vh;
+  }
+
+  #download-card {
+    position: fixed;
+    left: -99999px;
+    top: 0;
+    width: 1080px;
+    height: 1350px;
+    background:
+      radial-gradient(circle at 20% 18%, rgba(196,133,106,0.12), transparent 32%),
+      radial-gradient(circle at 84% 84%, rgba(201,168,76,0.13), transparent 34%),
+      linear-gradient(180deg, #fffaf2 0%, #f8efdf 100%);
+    overflow: hidden;
+  }
+
+  .card-frame {
+    position: absolute;
+    inset: 50px;
+    border: 1px solid rgba(201,168,76,0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-frame::before,
+  .card-frame::after {
+    content: '';
+    position: absolute;
+    inset: 18px;
+    border: 1px solid rgba(201,168,76,0.25);
+    pointer-events: none;
+  }
+
+  .card-inner {
+    width: calc(100% - 160px);
+    height: calc(100% - 160px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--dark);
+    position: relative;
+  }
+
+  .card-ornament {
+    font-size: 42px;
+    color: var(--gold);
+    letter-spacing: 0.45em;
+    margin-bottom: 20px;
+    opacity: 0.78;
+  }
+
+  .card-topline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: 0.52em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 34px;
+    padding-left: 0.52em;
+  }
+
+  .card-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 126px;
+    line-height: 0.95;
+    font-weight: 300;
+    letter-spacing: -0.03em;
+  }
+
+  .card-names .and {
+    display: block;
+    font-size: 54px;
+    color: var(--gold);
+    font-style: italic;
+    margin: 18px 0 16px;
+    letter-spacing: 0.18em;
+  }
+
+  .card-divider {
+    width: 260px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 42px 0;
+  }
+
+  .card-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 36px;
+    line-height: 1.7;
+    margin-bottom: 48px;
+  }
+
+  .card-info-grid {
+    width: min(100%, 820px);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .card-info {
+    padding: 20px 28px;
+    background: rgba(255,255,255,0.55);
+    border: 1px solid rgba(201,168,76,0.28);
+  }
+
+  .card-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.42em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    padding-left: 0.42em;
+  }
+
+  .card-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    line-height: 1.25;
+    font-weight: 300;
+  }
+
+  .card-footer {
+    margin-top: 48px;
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    letter-spacing: 0.32em;
+    color: var(--gold);
+    padding-left: 0.32em;
+  }
+
+  @media (max-width: 768px) {
+    .top-actions {
+      right: 12px;
+      top: calc(12px + var(--safe-top));
+      gap: 8px;
+    }
+
+    .action-btn {
+      padding: 11px 14px;
+      font-size: 10px;
+      letter-spacing: 0.13em;
+    }
+
+    #hero {
+      padding-top: max(52px, calc(52px + var(--safe-top)));
+      padding-bottom: max(120px, calc(120px + var(--safe-bottom)));
+    }
+
+    .hero-pre {
+      font-size: 9px;
+      letter-spacing: 0.38em;
+      margin-bottom: 18px;
+      padding-left: 0.38em;
+    }
+
+    .hero-ornament {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .hero-divider {
+      margin: 24px auto;
+      width: min(170px, 50vw);
+    }
+
+    .hero-invite {
+      line-height: 1.65;
+      max-width: 320px;
+    }
+
+    .hero-date-badge {
+      margin-top: 24px;
+      padding: 16px 18px;
+      gap: 5px;
+    }
+
+    .badge-date {
+      font-size: 17px;
+      line-height: 1.35;
+      letter-spacing: 0.06em;
+    }
+
+    .badge-time {
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      padding-left: 0.28em;
+    }
+
+    .scroll-indicator {
+      bottom: max(14px, calc(14px + var(--safe-bottom)));
+      gap: 7px;
+    }
+
+    .scroll-indicator span {
+      font-size: 8px;
+      letter-spacing: 0.3em;
+      padding-left: 0.3em;
+    }
+
+    .scroll-line { height: 28px; }
+
+    .birds-text {
+      bottom: 48px;
+      max-width: calc(100vw - 28px);
+      white-space: normal;
+      padding: 0 12px;
+    }
+
+    .birds-label {
+      font-size: 16px;
+      letter-spacing: 0.18em;
+    }
+
+    #details {
+      padding: 80px 18px;
+    }
+
+    .details-title {
+      margin-bottom: 36px;
+      letter-spacing: 0.35em;
+      padding-left: 0.35em;
+    }
+
+    .detail-item {
+      margin-bottom: 38px;
+      padding-bottom: 38px;
+    }
+
+    .detail-label {
+      letter-spacing: 0.35em;
+      padding-left: 0.35em;
+    }
+
+    .detail-value {
+      font-size: clamp(20px, 7vw, 28px);
+    }
+
+    .footer-names { font-size: 28px; }
+    .footer-text {
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      padding-left: 0.3em;
+    }
+  }
+
+  @media (max-width: 430px) {
+    #hero {
+      padding-left: 16px;
+      padding-right: 16px;
+      padding-bottom: max(118px, calc(118px + var(--safe-bottom)));
+    }
+
+    .hero-names {
+      font-size: clamp(44px, 15vw, 64px);
+    }
+
+    .hero-date-badge {
+      max-width: calc(100vw - 32px);
+      width: 100%;
+    }
+
+    .badge-date {
+      font-size: 16px;
+    }
+
+    .badge-time {
+      font-size: 9px;
+      letter-spacing: 0.24em;
+      padding-left: 0.24em;
+    }
+
+    .scroll-indicator {
+      bottom: max(12px, calc(12px + var(--safe-bottom)));
+    }
+
+    .scroll-line { height: 24px; }
+  }
+
+  @media (max-width: 360px) {
+    .action-btn {
+      padding: 10px 12px;
+      font-size: 9px;
+    }
+
+    .hero-pre {
+      font-size: 8px;
+      letter-spacing: 0.28em;
+      padding-left: 0.28em;
+    }
+
+    .hero-invite {
+      font-size: 15px;
+    }
+
+    .badge-date {
+      font-size: 15px;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-time {
+      letter-spacing: 0.2em;
+      padding-left: 0.2em;
+    }
+
+    .scroll-indicator span {
+      font-size: 7px;
+      letter-spacing: 0.22em;
+      padding-left: 0.22em;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div id="landing">
+  <div class="landing-content">
+    <div class="pre-text">Sizi düğünümüze davet ediyoruz</div>
+
+    <div class="envelope-wrap">
+      <div class="envelope" id="envelope" onclick="openEnvelope()">
+        <div class="env-body"></div>
+        <div class="env-left"></div>
+        <div class="env-right"></div>
+        <div class="env-flap"></div>
+        <div class="wax-seal">♥</div>
+        <div class="env-letter">
+          <div class="env-letter-text">
+            İrem &amp; Ömer Eren<br>
+            <span style="font-size:12px; color: #8b7340;">Düğün Davetiyesi</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="click-hint">Zarfı açmak için tıklayın</div>
+  </div>
+</div>
+
+<div class="top-actions" id="topActions">
+  <button class="action-btn" id="downloadBtn" type="button">PNG İndir</button>
+</div>
+
+<div id="main-content">
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-ornament">— ✦ —</div>
+      <div class="hero-pre">Mutlu bir ömrün başlangıcında</div>
+
+      <div class="hero-names">
+        İrem
+        <span class="and">&amp;</span>
+        Ömer
+        <span class="eren">Eren</span>
+      </div>
+
+      <div class="hero-divider"></div>
+
+      <p class="hero-invite">
+        Düğünümüzde sizleri görmekten<br>
+        mutluluk duyarız
+      </p>
+
+      <div class="hero-date-badge">
+        <div class="badge-date">30 Mayıs 2026</div>
+        <div class="badge-time">Saat 17:00</div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator" id="scrollIndicator">
+      <span>Kaydır</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <section id="birds-section">
+    <canvas id="birds-canvas"></canvas>
+    <div class="birds-text" id="birdsText">
+      <div class="birds-label">Birbirlerine sonsuza dek bağlı...</div>
+    </div>
+  </section>
+
+  <section id="details">
+    <div class="details-inner">
+      <span class="details-ornament">✦ ✦ ✦</span>
+      <div class="details-title">Düğün Bilgileri</div>
+
+      <div class="detail-item">
+        <span class="detail-icon">📅</span>
+        <div class="detail-label">Tarih</div>
+        <div class="detail-value">30 Mayıs 2026<br><em>Cumartesi</em></div>
+      </div>
+
+      <div class="detail-item">
+        <span class="detail-icon">🕔</span>
+        <div class="detail-label">Saat</div>
+        <div class="detail-value">17:00</div>
+      </div>
+
+      <div class="detail-item">
+        <span class="detail-icon">📍</span>
+        <div class="detail-label">Mekan</div>
+        <div class="detail-value">
+          Ada Konsept<br>
+          <em>EXPO Fuar Alanı</em><br>
+          <span style="font-size:0.65em; font-family:'Montserrat', sans-serif; font-weight:300; letter-spacing:0.15em; color: rgba(253,248,240,0.5);">Onikişubat / Kahramanmaraş</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer">
+    <div class="footer-hearts">♥ ♥ ♥</div>
+    <div class="footer-names">İrem &amp; Ömer Eren</div>
+    <div class="footer-text">30 · 05 · 2026 — Kahramanmaraş</div>
+  </footer>
+</div>
+
+<canvas id="rope-canvas"></canvas>
+
+<div id="download-card" aria-hidden="true">
+  <div class="card-frame">
+    <div class="card-inner">
+      <div class="card-ornament">— ✦ —</div>
+      <div class="card-topline">Düğün Davetiyesi</div>
+
+      <div class="card-names">
+        İrem
+        <span class="and">&amp;</span>
+        Ömer Eren
+      </div>
+
+      <div class="card-divider"></div>
+
+      <div class="card-subtitle">
+        Bu özel günümüzde<br>
+        sizleri aramızda görmekten mutluluk duyarız
+      </div>
+
+      <div class="card-info-grid">
+        <div class="card-info">
+          <div class="card-label">Tarih</div>
+          <div class="card-value">30 Mayıs 2026 · Cumartesi</div>
+        </div>
+
+        <div class="card-info">
+          <div class="card-label">Saat</div>
+          <div class="card-value">17:00</div>
+        </div>
+
+        <div class="card-info">
+          <div class="card-label">Mekan</div>
+          <div class="card-value">Ada Konsept · EXPO Fuar Alanı<br>Onikişubat / Kahramanmaraş</div>
+        </div>
+      </div>
+
+      <div class="card-footer">İrem &amp; Ömer Eren</div>
+    </div>
+  </div>
+</div>
+
+<script>
+window.addEventListener('scroll', () => {
+  const ind = document.getElementById('scrollIndicator');
+  if (ind) {
+    if (window.scrollY > 60) ind.classList.add('hidden');
+    else ind.classList.remove('hidden');
+  }
+});
+
+function openEnvelope() {
+  const env = document.getElementById('envelope');
+  if (env.classList.contains('open')) return;
+
+  env.classList.add('open');
+
+  setTimeout(() => {
+    const landing = document.getElementById('landing');
+    const main = document.getElementById('main-content');
+    const actions = document.getElementById('topActions');
+
+    main.classList.add('visible');
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        landing.classList.add('hidden');
+        actions.classList.add('visible');
+        initBirds();
+        initRope();
+      });
+    });
+  }, 1600);
+}
+
+async function downloadInvitationAsPNG() {
+  const button = document.getElementById('downloadBtn');
+  const card = document.getElementById('download-card');
+
+  if (!window.html2canvas) {
+    alert('PNG oluşturucu yüklenemedi.');
+    return;
+  }
+
+  button.disabled = true;
+  const originalText = button.textContent;
+  button.textContent = 'Hazırlanıyor...';
+
+  try {
+    const canvas = await html2canvas(card, {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: null
+    });
+
+    const link = document.createElement('a');
+    link.download = 'irem-omer-eren-dugun-davetiyesi.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+
+    button.textContent = 'İndirildi';
+    setTimeout(() => {
+      button.textContent = originalText;
+      button.disabled = false;
+    }, 1200);
+  } catch (error) {
+    console.error(error);
+    alert('PNG oluşturulurken bir hata oluştu.');
+    button.textContent = originalText;
+    button.disabled = false;
+  }
+}
+
+document.getElementById('downloadBtn').addEventListener('click', downloadInvitationAsPNG);
+
+/* ==================== BIRDS & RINGS ==================== */
+let birdsCanvas, birdsCtx, birdsW, birdsH;
+let birds = [];
+let breakParticles = [];
+let sparkles = [];
+let petals = [];
+let ringRotation = 0;
+let time = 0;
+let ropeBreakTriggered = false;
+let ropeBreakTime = 0;
+let ropeDangleSwing = 0;
+let birdsInitialized = false;
+
+function initBirds() {
+  if (birdsInitialized) return;
+  birdsInitialized = true;
+
+  birdsCanvas = document.getElementById('birds-canvas');
+  birdsCtx = birdsCanvas.getContext('2d');
+
+  function resize() {
+    birdsW = birdsCanvas.width = birdsCanvas.offsetWidth || window.innerWidth;
+    birdsH = birdsCanvas.height = birdsCanvas.offsetHeight || window.innerHeight;
+    if (birds.length) {
+      birds[0].startX = birdsW * 0.28;
+      birds[0].startY = birdsH * 0.38;
+      birds[1].startX = birdsW * 0.72;
+      birds[1].startY = birdsH * 0.38;
+    }
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+  setTimeout(resize, 200);
+
+  for (let i = 0; i < 18; i++) petals.push(makePetal());
+
+  birds = [
+    {
+      startX: birdsW * 0.28, startY: birdsH * 0.38,
+      x: birdsW * 0.28, y: birdsH * 0.38,
+      dir: 1,
+      wingAngle: 0, wingSpeed: 0.055,
+      floatOffset: 0, floatSpeed: 0.009,
+      color1: '#5c3d28', color2: '#8b5e3c', color3: '#c4956a',
+      featherColor: '#3d2518',
+      side: 'left'
+    },
+    {
+      startX: birdsW * 0.72, startY: birdsH * 0.38,
+      x: birdsW * 0.72, y: birdsH * 0.38,
+      dir: -1,
+      wingAngle: Math.PI * 0.6, wingSpeed: 0.055,
+      floatOffset: Math.PI, floatSpeed: 0.009,
+      color1: '#4a3260', color2: '#7a5a9a', color3: '#b090cc',
+      featherColor: '#2e1e45',
+      side: 'right'
+    }
+  ];
+
+  function loop() {
+    time += 0.016;
+    ringRotation += 0.012;
+
+    birdsCtx.clearRect(0, 0, birdsW, birdsH);
+    drawBackground();
+    updatePetals();
+
+    birds.forEach(b => {
+      b.wingAngle += b.wingSpeed;
+      b.floatOffset += b.floatSpeed;
+      b.y = b.startY + Math.sin(b.floatOffset) * 10;
+      b.x = b.startX + Math.sin(b.floatOffset * 0.3) * 4;
+    });
+
+    const prog = getBirdsSectionProgress();
+    drawRopeSystem(prog);
+    birds.forEach(b => drawBird(b));
+    updateSparkles();
+
+    document.getElementById('birdsText').classList.add('visible');
+    requestAnimationFrame(loop);
+  }
+
+  loop();
+}
+
+function makePetal() {
+  return {
+    x: Math.random() * (birdsW || 800),
+    y: -20 - Math.random() * 100,
+    vx: (Math.random() - 0.5) * 0.8,
+    vy: 0.4 + Math.random() * 0.6,
+    rot: Math.random() * Math.PI * 2,
+    rotSpeed: (Math.random() - 0.5) * 0.04,
+    size: 4 + Math.random() * 7,
+    opacity: 0.3 + Math.random() * 0.4,
+    hue: Math.random() > 0.5 ? 'rgba(210,160,120,' : 'rgba(220,170,170,'
+  };
+}
+
+function updatePetals() {
+  const ctx = birdsCtx;
+  petals.forEach(p => {
+    p.x += p.vx + Math.sin(time * 0.5 + p.y * 0.01) * 0.3;
+    p.y += p.vy;
+    p.rot += p.rotSpeed;
+    if (p.y > birdsH + 20) Object.assign(p, makePetal(), { x: Math.random() * birdsW, y: -20 });
+
+    ctx.save();
+    ctx.translate(p.x, p.y);
+    ctx.rotate(p.rot);
+    ctx.beginPath();
+    ctx.ellipse(0, 0, p.size, p.size * 0.5, 0, 0, Math.PI * 2);
+    ctx.fillStyle = p.hue + p.opacity + ')';
+    ctx.fill();
+    ctx.restore();
+  });
+}
+
+function drawBackground() {
+  const ctx = birdsCtx;
+  const grd = ctx.createRadialGradient(birdsW / 2, birdsH * 0.4, 10, birdsW / 2, birdsH * 0.4, birdsW * 0.45);
+  grd.addColorStop(0, 'rgba(255,240,210,0.35)');
+  grd.addColorStop(1, 'rgba(255,240,210,0)');
+  ctx.fillStyle = grd;
+  ctx.fillRect(0, 0, birdsW, birdsH);
+}
+
+function getBirdsSectionProgress() {
+  const section = document.getElementById('birds-section');
+  if (!section) return 0;
+
+  const rect = section.getBoundingClientRect();
+  const vh = window.innerHeight;
+
+  const start = vh;
+  const end = -rect.height;
+  const progress = (start - rect.top) / (start - end);
+
+  return Math.max(0, Math.min(1, progress));
+}
+
+function drawBird(b) {
+  const ctx = birdsCtx;
+  ctx.save();
+  ctx.translate(b.x, b.y);
+  if (b.dir === -1) ctx.scale(-1, 1);
+
+  const wf = Math.sin(b.wingAngle);
+
+  ctx.save();
+  ctx.scale(1, 0.25);
+  ctx.translate(0, 80);
+  ctx.beginPath();
+  ctx.ellipse(0, 0, 28, 10, 0, 0, Math.PI * 2);
+  ctx.fillStyle = 'rgba(80,40,10,0.08)';
+  ctx.fill();
+  ctx.restore();
+
+  ctx.save();
+  ctx.translate(-6, 4);
+  ctx.rotate(0.25 - wf * 0.28);
+  ctx.beginPath();
+  ctx.moveTo(0,0);
+  ctx.bezierCurveTo(-8, -6, -28, -4, -34, 12);
+  ctx.bezierCurveTo(-28, 18, -10, 16, 0, 6);
+  ctx.fillStyle = b.featherColor;
+  ctx.fill();
+
+  for (let i = 0; i < 5; i++) {
+    const t = i / 4;
+    ctx.beginPath();
+    ctx.moveTo(-t * 30, t * 10 - 2);
+    ctx.lineTo(-t * 34 + 4, t * 14 + 4);
+    ctx.strokeStyle = 'rgba(255,220,160,0.12)';
+    ctx.lineWidth = 0.8;
+    ctx.stroke();
+  }
+  ctx.restore();
+
+  const bodyGrad = ctx.createLinearGradient(-18, -12, 18, 12);
+  bodyGrad.addColorStop(0, b.color3);
+  bodyGrad.addColorStop(0.4, b.color2);
+  bodyGrad.addColorStop(1, b.color1);
+  ctx.beginPath();
+  ctx.ellipse(0, 0, 20, 12, 0.25, 0, Math.PI * 2);
+  ctx.fillStyle = bodyGrad;
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.ellipse(-4, -5, 10, 5, 0.3, 0, Math.PI);
+  ctx.fillStyle = 'rgba(255,255,255,0.08)';
+  ctx.fill();
+
+  const headGrad = ctx.createRadialGradient(19, -9, 2, 19, -9, 10);
+  headGrad.addColorStop(0, b.color3);
+  headGrad.addColorStop(1, b.color1);
+  ctx.beginPath();
+  ctx.arc(19, -9, 9.5, 0, Math.PI * 2);
+  ctx.fillStyle = headGrad;
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(16, -13, 4, 0, Math.PI * 1.2);
+  ctx.fillStyle = 'rgba(255,255,255,0.1)';
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(22, -11, 4, 0, Math.PI * 2);
+  ctx.fillStyle = 'rgba(255,200,100,0.2)';
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(22, -11, 3, 0, Math.PI * 2);
+  ctx.fillStyle = '#fff9f0';
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(22.3, -11, 2, 0, Math.PI * 2);
+  ctx.fillStyle = '#1a0a00';
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(23, -12, 0.8, 0, Math.PI * 2);
+  ctx.fillStyle = 'rgba(255,255,255,0.85)';
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.moveTo(27, -11);
+  ctx.bezierCurveTo(32, -11, 36, -9, 34, -7);
+  ctx.bezierCurveTo(32, -7, 29, -9, 27, -9);
+  ctx.fillStyle = '#d4a840';
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.moveTo(27, -9);
+  ctx.bezierCurveTo(31, -8, 34, -7, 33, -6);
+  ctx.bezierCurveTo(30, -5, 27, -7, 27, -8);
+  ctx.fillStyle = '#b88c2c';
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.moveTo(28, -11);
+  ctx.lineTo(33, -9.5);
+  ctx.strokeStyle = 'rgba(255,220,100,0.4)';
+  ctx.lineWidth = 0.8;
+  ctx.stroke();
+
+  ctx.save();
+  ctx.translate(-4, -5);
+  ctx.rotate(-0.35 + wf * 0.45);
+  const wingGrad = ctx.createLinearGradient(-30, 0, 10, 10);
+  wingGrad.addColorStop(0, b.color1);
+  wingGrad.addColorStop(0.5, b.color2);
+  wingGrad.addColorStop(1, b.color3);
+  ctx.beginPath();
+  ctx.moveTo(0, 0);
+  ctx.bezierCurveTo(-5, -8, -25, -10, -32, -2);
+  ctx.bezierCurveTo(-30, 8, -12, 12, 0, 6);
+  ctx.fillStyle = wingGrad;
+  ctx.fill();
+
+  for (let i = 0; i < 6; i++) {
+    const t = i / 5;
+    const fx = -t * 30 - 2;
+    const fy = -t * 4 + (1-t) * 4;
+    ctx.beginPath();
+    ctx.moveTo(fx, fy);
+    ctx.lineTo(fx - 4, fy + 7 + t * 4);
+    ctx.strokeStyle = `rgba(255,210,140,${0.15 + t * 0.1})`;
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  }
+  ctx.restore();
+
+  ctx.save();
+  ctx.translate(-16, 2);
+  const tailWave = Math.sin(b.wingAngle * 0.5) * 0.08;
+  ctx.rotate(0.1 + tailWave);
+  const tailColors = [b.featherColor, b.color1, b.featherColor];
+  for (let i = -1; i <= 1; i++) {
+    ctx.save();
+    ctx.rotate(i * 0.15);
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.bezierCurveTo(-8, i * 3 - 4, -20, i * 5 - 3, -22, i * 6);
+    ctx.bezierCurveTo(-20, i * 6 + 4, -8, i * 3 + 2, 0, 2);
+    ctx.fillStyle = tailColors[i + 1];
+    ctx.fill();
+    ctx.restore();
+  }
+  ctx.restore();
+
+  ctx.restore();
+  drawRingFromBeak(b);
+}
+
+function drawRingFromBeak(b) {
+  const ctx = birdsCtx;
+  let beakX, beakY;
+  if (b.dir === 1) {
+    beakX = b.x + 34;
+    beakY = b.y - 7;
+  } else {
+    beakX = b.x - 34;
+    beakY = b.y - 7;
+  }
+
+  const stringLen = 38;
+  const swayX = Math.sin(time * 1.2 + (b.side === 'left' ? 0 : Math.PI)) * 3;
+  const ringX = beakX + swayX;
+  const ringY = beakY + stringLen;
+
+  ctx.beginPath();
+  ctx.moveTo(beakX, beakY);
+  ctx.quadraticCurveTo(beakX + swayX * 0.5, beakY + stringLen * 0.5, ringX, ringY);
+  const threadGrad = ctx.createLinearGradient(beakX, beakY, ringX, ringY);
+  threadGrad.addColorStop(0, 'rgba(201,168,76,0.9)');
+  threadGrad.addColorStop(1, 'rgba(180,140,50,0.6)');
+  ctx.strokeStyle = threadGrad;
+  ctx.lineWidth = 1.2;
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.arc(ringX, ringY, 16, 0, Math.PI * 2);
+  const auraGrad = ctx.createRadialGradient(ringX, ringY, 8, ringX, ringY, 16);
+  auraGrad.addColorStop(0, 'rgba(255,220,100,0.15)');
+  auraGrad.addColorStop(1, 'rgba(255,220,100,0)');
+  ctx.fillStyle = auraGrad;
+  ctx.fill();
+
+  ctx.save();
+  ctx.translate(ringX + 2, ringY + 12);
+  ctx.scale(1, 0.3);
+  ctx.beginPath();
+  ctx.arc(0, 0, 11, 0, Math.PI * 2);
+  ctx.fillStyle = 'rgba(100,60,10,0.12)';
+  ctx.fill();
+  ctx.restore();
+
+  const rx = ringX;
+  const ry = ringY;
+  const rr = 12;
+  const thickness = 4.5;
+  const tiltY = 0.38;
+  const spinAngle = ringRotation + (b.side === 'left' ? 0 : Math.PI * 0.7);
+
+  ctx.save();
+  ctx.translate(rx, ry);
+  ctx.scale(1, tiltY);
+  ctx.beginPath();
+  ctx.arc(0, 0, rr, 0, Math.PI);
+  const ringDark = ctx.createLinearGradient(-rr, 0, rr, 0);
+  ringDark.addColorStop(0, '#8b6914');
+  ringDark.addColorStop(0.5, '#a07820');
+  ringDark.addColorStop(1, '#8b6914');
+  ctx.strokeStyle = ringDark;
+  ctx.lineWidth = thickness;
+  ctx.stroke();
+  ctx.restore();
+
+  ctx.save();
+  ctx.translate(rx, ry);
+  ctx.scale(1, tiltY);
+  ctx.beginPath();
+  ctx.arc(0, 0, rr, Math.PI, Math.PI * 2);
+  const ringBright = ctx.createLinearGradient(-rr, 0, rr, 0);
+  ringBright.addColorStop(0, '#c9a84c');
+  ringBright.addColorStop(0.3, '#f0d070');
+  ringBright.addColorStop(0.5, '#fff0a0');
+  ringBright.addColorStop(0.7, '#f0d070');
+  ringBright.addColorStop(1, '#c9a84c');
+  ctx.strokeStyle = ringBright;
+  ctx.lineWidth = thickness;
+  ctx.stroke();
+  ctx.restore();
+
+  const hlX = rx + Math.cos(spinAngle) * rr;
+  const hlY = ry + Math.sin(spinAngle) * rr * tiltY;
+  ctx.beginPath();
+  ctx.arc(hlX, hlY, 2.5, 0, Math.PI * 2);
+  ctx.fillStyle = 'rgba(255,255,200,0.9)';
+  ctx.fill();
+
+  const gemAngle = spinAngle + Math.PI * 0.5;
+  const gemX = rx + Math.cos(gemAngle) * rr;
+  const gemY = ry + Math.sin(gemAngle) * rr * tiltY;
+  drawGem(ctx, gemX, gemY, 4);
+
+  if (Math.random() < 0.04) {
+    sparkles.push({ x: gemX + (Math.random()-0.5)*6, y: gemY + (Math.random()-0.5)*6, life: 1, size: 2 + Math.random()*3 });
+  }
+}
+
+function drawGem(ctx, x, y, s) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.beginPath();
+  ctx.moveTo(0, -s);
+  ctx.lineTo(s * 0.7, 0);
+  ctx.lineTo(0, s * 0.6);
+  ctx.lineTo(-s * 0.7, 0);
+  ctx.closePath();
+  const gGrad = ctx.createRadialGradient(0, -s*0.3, 0, 0, 0, s);
+  gGrad.addColorStop(0, 'rgba(255,255,255,0.95)');
+  gGrad.addColorStop(0.4, 'rgba(200,230,255,0.8)');
+  gGrad.addColorStop(1, 'rgba(120,180,255,0.4)');
+  ctx.fillStyle = gGrad;
+  ctx.fill();
+  ctx.strokeStyle = 'rgba(180,220,255,0.6)';
+  ctx.lineWidth = 0.5;
+  ctx.stroke();
+  ctx.restore();
+}
+
+function updateSparkles() {
+  const ctx = birdsCtx;
+  sparkles = sparkles.filter(s => s.life > 0);
+  sparkles.forEach(s => {
+    s.life -= 0.04;
+    s.y -= 0.5;
+    ctx.save();
+    ctx.globalAlpha = s.life;
+    ctx.translate(s.x, s.y);
+
+    for (let i = 0; i < 4; i++) {
+      ctx.save();
+      ctx.rotate(i * Math.PI / 2);
+      ctx.beginPath();
+      ctx.moveTo(0, -s.size);
+      ctx.lineTo(0.5, -0.5);
+      ctx.lineTo(0, 0);
+      ctx.lineTo(-0.5, -0.5);
+      ctx.closePath();
+      ctx.fillStyle = 'rgba(255,240,140,0.9)';
+      ctx.fill();
+      ctx.restore();
+    }
+
+    ctx.restore();
+  });
+}
+
+function drawRopeSystem(progress) {
+  const ctx = birdsCtx;
+  const b1 = birds[0], b2 = birds[1];
+  const r1x = b1.x + 34 + Math.sin(time * 1.2) * 3;
+  const r1y = b1.y - 7 + 38;
+  const r2x = b2.x - 34 + Math.sin(time * 1.2 + Math.PI) * 3;
+  const r2y = b2.y - 7 + 38;
+
+  const midX = (r1x + r2x) / 2;
+  const baseSag = 30 + Math.sin(time * 0.4) * 8;
+  const BREAK_AT = 0.42;
+  const tension = Math.pow(progress, 1.5);
+
+  if (progress < BREAK_AT && !ropeBreakTriggered) {
+    const normalized = progress / BREAK_AT;
+    const pull = Math.pow(normalized, 1.5);
+    const currentSag = baseSag * (1 - pull * 0.78);
+    const wobble = Math.sin(time * 2.5) * (1 - pull) * 5;
+    drawTwistedRope(ctx, r1x, r1y, r2x, r2y, midX, (r1y + r2y) / 2 + currentSag + wobble, tension);
+
+    if (pull > 0.72) {
+      const frayAmount = (pull - 0.72) / 0.28;
+      drawFraying(ctx, midX, (r1y + r2y) / 2 + currentSag, frayAmount);
+    }
+  } else if (progress >= BREAK_AT && !ropeBreakTriggered) {
+    ropeBreakTriggered = true;
+    ropeBreakTime = time;
+    const snapY = (r1y + r2y) / 2 + baseSag * 0.35;
+    spawnBreakBurst(midX, snapY);
+  }
+
+  if (ropeBreakTriggered) {
+    const elapsed = time - ropeBreakTime;
+    ropeDangleSwing += 0.05;
+    const swingL = Math.sin(ropeDangleSwing) * Math.exp(-elapsed * 0.3) * 25;
+    const swingR = Math.sin(ropeDangleSwing + Math.PI) * Math.exp(-elapsed * 0.3) * 25;
+    const dropLen = Math.min(elapsed * 80, 55);
+
+    ctx.beginPath();
+    ctx.moveTo(r1x, r1y);
+    ctx.quadraticCurveTo(r1x + swingL * 0.6, r1y + dropLen * 0.5, r1x + swingL, r1y + dropLen);
+    ctx.strokeStyle = 'rgba(139,100,30,0.7)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(r1x - 1.5, r1y);
+    ctx.quadraticCurveTo(r1x + swingL * 0.6 - 2, r1y + dropLen * 0.5, r1x + swingL - 3, r1y + dropLen);
+    ctx.strokeStyle = 'rgba(180,130,40,0.5)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(r2x, r2y);
+    ctx.quadraticCurveTo(r2x + swingR * 0.6, r2y + dropLen * 0.5, r2x + swingR, r2y + dropLen);
+    ctx.strokeStyle = 'rgba(139,100,30,0.7)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(r2x + 1.5, r2y);
+    ctx.quadraticCurveTo(r2x + swingR * 0.6 + 2, r2y + dropLen * 0.5, r2x + swingR + 3, r2y + dropLen);
+    ctx.strokeStyle = 'rgba(180,130,40,0.5)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    drawFrayEnd(ctx, r1x + swingL, r1y + dropLen);
+    drawFrayEnd(ctx, r2x + swingR, r2y + dropLen);
+    updateBreakParticles();
+  }
+}
+
+function drawTwistedRope(ctx, x1, y1, x2, y2, cx, cy, progress) {
+  const N = 60;
+  const points = [];
+  for (let i = 0; i <= N; i++) {
+    const t = i / N;
+    const px = (1-t)*(1-t)*x1 + 2*(1-t)*t*cx + t*t*x2;
+    const py = (1-t)*(1-t)*y1 + 2*(1-t)*t*cy + t*t*y2;
+    points.push({ x: px, y: py });
+  }
+
+  const thickness = 2.5 - progress * 1.1;
+  const alpha = 0.9 - progress * 0.26;
+
+  ctx.beginPath();
+  ctx.moveTo(points[0].x, points[0].y);
+  for (let i = 1; i < points.length; i++) ctx.lineTo(points[i].x, points[i].y);
+  ctx.strokeStyle = `rgba(120,85,25,${alpha})`;
+  ctx.lineWidth = thickness + 1;
+  ctx.lineCap = 'round';
+  ctx.stroke();
+
+  ctx.beginPath();
+  for (let i = 0; i <= N; i++) {
+    const t = i / N;
+    const p = points[i];
+    let nx = 0, ny = 0;
+    if (i < N) {
+      const dp = points[i + 1];
+      const dx = dp.x - p.x, dy = dp.y - p.y;
+      const len = Math.sqrt(dx*dx + dy*dy) || 1;
+      nx = -dy / len; ny = dx / len;
+    }
+    const twist = Math.sin(t * Math.PI * 6 + time * 2) * (thickness * 0.7);
+    const px2 = p.x + nx * twist;
+    const py2 = p.y + ny * twist;
+    if (i === 0) ctx.moveTo(px2, py2);
+    else ctx.lineTo(px2, py2);
+  }
+  ctx.strokeStyle = `rgba(200,155,50,${alpha * 0.7})`;
+  ctx.lineWidth = thickness * 0.6;
+  ctx.stroke();
+
+  ctx.beginPath();
+  for (let i = 0; i <= N; i++) {
+    const t = i / N;
+    const p = points[i];
+    let nx = 0, ny = 0;
+    if (i < N) {
+      const dp = points[i + 1];
+      const dx = dp.x - p.x, dy = dp.y - p.y;
+      const len = Math.sqrt(dx*dx + dy*dy) || 1;
+      nx = -dy / len; ny = dx / len;
+    }
+    const twist = Math.sin(t * Math.PI * 6 + time * 2 + Math.PI) * (thickness * 0.6);
+    const px2 = p.x + nx * twist;
+    const py2 = p.y + ny * twist;
+    if (i === 0) ctx.moveTo(px2, py2);
+    else ctx.lineTo(px2, py2);
+  }
+  ctx.strokeStyle = `rgba(160,110,30,${alpha * 0.55})`;
+  ctx.lineWidth = thickness * 0.45;
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(points[0].x, points[0].y - 1);
+  for (let i = 1; i < points.length; i++) ctx.lineTo(points[i].x, points[i].y - 1);
+  ctx.strokeStyle = `rgba(255,220,100,${alpha * 0.25})`;
+  ctx.lineWidth = 0.8;
+  ctx.stroke();
+}
+
+function drawFraying(ctx, cx, cy, amount) {
+  const count = Math.floor(4 + amount * 8);
+  for (let i = 0; i < count; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const len = 3 + Math.random() * 12 * amount;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(cx + Math.cos(angle) * len, cy + Math.sin(angle) * len);
+    ctx.strokeStyle = `rgba(160,110,30,${0.3 + Math.random() * 0.4 * amount})`;
+    ctx.lineWidth = 0.5 + Math.random() * 0.5;
+    ctx.stroke();
+  }
+}
+
+function drawFrayEnd(ctx, x, y) {
+  for (let i = 0; i < 5; i++) {
+    const angle = Math.PI * 0.3 + (Math.random() - 0.5) * 1.2;
+    const len = 4 + Math.random() * 10;
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x + Math.cos(angle) * len, y + Math.sin(angle) * len);
+    ctx.strokeStyle = `rgba(160,110,30,${0.3 + Math.random() * 0.4})`;
+    ctx.lineWidth = 0.6;
+    ctx.stroke();
+  }
+}
+
+function spawnBreakBurst(x, y) {
+  for (let i = 0; i < 40; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const speed = 1.5 + Math.random() * 5;
+    breakParticles.push({
+      x, y,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed - 3,
+      life: 1,
+      decay: 0.012 + Math.random() * 0.025,
+      size: 1.5 + Math.random() * 4,
+      type: Math.random() > 0.5 ? 'spark' : 'fiber'
+    });
+  }
+
+  for (let i = 0; i < 12; i++) {
+    const angle = (Math.random() - 0.5) * Math.PI + (i < 6 ? Math.PI : 0);
+    breakParticles.push({
+      x, y,
+      vx: Math.cos(angle) * (2 + Math.random() * 3),
+      vy: Math.sin(angle) * (2 + Math.random() * 3) - 1,
+      life: 1,
+      decay: 0.008 + Math.random() * 0.012,
+      size: 1,
+      len: 8 + Math.random() * 16,
+      type: 'fiber',
+      angle
+    });
+  }
+}
+
+function updateBreakParticles() {
+  const ctx = birdsCtx;
+  breakParticles = breakParticles.filter(p => p.life > 0);
+  breakParticles.forEach(p => {
+    p.x += p.vx;
+    p.y += p.vy;
+    p.vy += 0.18;
+    p.vx *= 0.98;
+    p.life -= p.decay;
+
+    if (p.type === 'spark') {
+      const grd = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size);
+      grd.addColorStop(0, `rgba(255,240,120,${p.life})`);
+      grd.addColorStop(0.5, `rgba(220,160,30,${p.life * 0.6})`);
+      grd.addColorStop(1, `rgba(180,100,10,0)`);
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = grd;
+      ctx.fill();
+    } else {
+      ctx.beginPath();
+      ctx.moveTo(p.x, p.y);
+      ctx.lineTo(p.x - p.vx * 3, p.y - p.vy * 3);
+      ctx.strokeStyle = `rgba(160,110,30,${p.life * 0.7})`;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+  });
+}
+
+/* ==================== ROPE CANVAS ==================== */
+let ropeInitialized = false;
+
+function initRope() {
+  if (ropeInitialized) return;
+  ropeInitialized = true;
+
+  const canvas = document.getElementById('rope-canvas');
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width = 4;
+    canvas.height = window.innerHeight;
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+
+  let ropeBreakY = -1;
+  let broken = false;
+  let breakTime = -1;
+  let particles2 = [];
+
+  function getScrollProgress() {
+    const mainH = document.getElementById('main-content').scrollHeight;
+    const progress = window.scrollY / Math.max(1, (mainH - window.innerHeight));
+    return Math.max(0, Math.min(1, progress));
+  }
+
+  function draw() {
+    const p = getScrollProgress();
+    ctx.clearRect(0, 0, 4, canvas.height);
+    const breakAt = 0.55;
+
+    if (p < breakAt && !broken) {
+      const segments = 60;
+      for (let i = 0; i < segments; i++) {
+        const y1 = (i / segments) * canvas.height;
+        const y2 = ((i + 0.5) / segments) * canvas.height;
+        const alpha = 0.3 + 0.2 * Math.sin(i * 0.5 + Date.now() * 0.002);
+        ctx.beginPath();
+        ctx.moveTo(2, y1);
+        ctx.lineTo(2, y2);
+        ctx.strokeStyle = `rgba(201,168,76,${alpha})`;
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+      }
+    } else if (p >= breakAt && !broken) {
+      broken = true;
+      breakTime = Date.now();
+      ropeBreakY = canvas.height * 0.5;
+      for (let i = 0; i < 30; i++) {
+        particles2.push({
+          x: 2, y: ropeBreakY,
+          vx: (Math.random() - 0.5) * 5,
+          vy: (Math.random() - 0.5) * 5,
+          life: 1,
+          decay: 0.015 + Math.random() * 0.025
+        });
+      }
+    }
+
+    if (broken) {
+      const elapsed = (Date.now() - breakTime) / 1000;
+      const topFall = Math.min(elapsed * elapsed * 60, ropeBreakY);
+      const drawTop = ropeBreakY - topFall;
+
+      if (drawTop > 0) {
+        for (let y = 0; y < drawTop; y += 8) {
+          ctx.beginPath();
+          ctx.moveTo(2, y);
+          ctx.lineTo(2, Math.min(y + 4, drawTop));
+          ctx.strokeStyle = 'rgba(201,168,76,0.3)';
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+        }
+      }
+
+      for (let y = ropeBreakY; y < canvas.height; y += 8) {
+        ctx.beginPath();
+        ctx.moveTo(2, y);
+        ctx.lineTo(2, Math.min(y + 4, canvas.height));
+        ctx.strokeStyle = 'rgba(201,168,76,0.25)';
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+      }
+
+      particles2 = particles2.filter(p2 => p2.life > 0);
+      particles2.forEach(p2 => {
+        p2.x += p2.vx;
+        p2.y += p2.vy;
+        p2.vy += 0.1;
+        p2.life -= p2.decay;
+        ctx.beginPath();
+        ctx.arc(p2.x, p2.y, 1.5, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(201,168,76,${p2.life})`;
+        ctx.fill();
+      });
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+}
+</script>
+</body>
+</html>
